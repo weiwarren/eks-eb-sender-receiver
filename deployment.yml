@@ -1,0 +1,20 @@
+# Assuming you want to create a Kubernetes deployment for an EKS cluster
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-sender-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eks-sender
+  template:
+    metadata:
+      labels:
+        app: eks-sender
+    spec:
+      containers:
+      - name: eks-sender
+        image: eks-sender:latest
+        ports:
+        - containerPort: 3000
